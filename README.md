@@ -1,6 +1,7 @@
 max-js-bundler
 ==============
 
+[![Build Status](https://travis-ci.org/fde31/max-js-bundler.svg?branch=master)](https://travis-ci.org/fde31/max-js-bundler)
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/max-js-bundler.svg)](https://npmjs.org/package/max-js-bundler)
 [![Downloads/week](https://img.shields.io/npm/dw/max-js-bundler.svg)](https://npmjs.org/package/max-js-bundler)
