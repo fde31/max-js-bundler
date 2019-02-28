@@ -16,7 +16,8 @@ interface ExamplePathInfo {
 enum Example {
 	basic,
 	localImport,
-	npmImport
+	npmImport,
+	tonalImport
 }
 
 const exampleFiles: { [s: number]: ExamplePathInfo} = {
@@ -31,6 +32,10 @@ const exampleFiles: { [s: number]: ExamplePathInfo} = {
 	[Example.npmImport]: {
 		source: join(ExampleBasePath, "npm-import", "index.js"),
 		output: join(__dirname, "npm-import.build.js")
+	},
+	[Example.tonalImport]: {
+		source: join(ExampleBasePath, "tonal-import", "index.js"),
+		output: join(__dirname, "tonal-import.build.js")
 	}
 
 };
@@ -90,6 +95,12 @@ describe("build", () => {
 		.command(["build", `${exampleFiles[Example.npmImport].source}`, "--output", `${exampleFiles[Example.npmImport].output}`, "--force"])
 		.it("runs successfully on a file using npm dependencies", () => {
 			expect(existsSync(exampleFiles[Example.npmImport].output)).to.be.true;
+		});
+
+	test
+		.command(["build", `${exampleFiles[Example.tonalImport].source}`, "--output", `${exampleFiles[Example.tonalImport].output}`, "--force"])
+		.it("runs successfully on a file using npm dependencies", () => {
+			expect(existsSync(exampleFiles[Example.tonalImport].output)).to.be.true;
 		});
 
 });
