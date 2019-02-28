@@ -2,12 +2,9 @@ max-js-bundler
 ==============
 
 [![Build Status](https://travis-ci.org/fde31/max-js-bundler.svg?branch=master)](https://travis-ci.org/fde31/max-js-bundler)
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/max-js-bundler.svg)](https://npmjs.org/package/max-js-bundler)
-[![Downloads/week](https://img.shields.io/npm/dw/max-js-bundler.svg)](https://npmjs.org/package/max-js-bundler)
-[![License](https://img.shields.io/npm/l/max-js-bundler.svg)](https://github.com/fde31/max-js-bundler/blob/master/package.json)
 
-## Description
+# Description
 
 CLI Tool to bundle and transpile modern JS for usage in `[js]` and `[jsui]` in Max MSP. The idea is basically to support writing modern Ecmascript code alongside the usage of NPM dependencies within your code. Traditional module bundlers get us 95% there but there are some specifics to the `js` environment in Max that need to be accounted for. This project aims to help with that.
 
@@ -20,9 +17,9 @@ Big shout outs to the following projects that enable this:
 
 ### Notes
 
-Currently we are using a custom fork of *Rollup* in order to offer a custom `format` to avoid any module loader wrapping and leaving the global namespace intact. Apart from that the *Treeshaking* feature is disabled until I find a way to disable it *only* for the top level file. None of these issues should affect your code or its functionality. It just means you'll end up with a slightly bigger bundle that needed.
+Currently we are using a custom fork of *Rollup* in order to offer a custom `format` to avoid any module loader wrapping and leaving the global namespace intact. Apart from that the *Treeshaking* feature is disabled until I find a way to disable it *only* for the top level file. None of these issues should affect your code or its functionality. It just means you'll end up with a slightly bigger bundle than needed.
 
-## Usage
+# Usage
 ```sh-session
 $ npm install -g max-js-bundler
 
@@ -34,7 +31,7 @@ max-js-bundler/1.0.0-beta.1 darwin-x64 node-v10.13.0
 
 $ max-js-bundler --help [COMMAND]
 ```
-## Commands
+# Commands
 <!-- commands -->
 * [`max-js-bundler build FILE`](#max-js-bundler-build-file)
 * [`max-js-bundler help [COMMAND]`](#max-js-bundler-help-command)
