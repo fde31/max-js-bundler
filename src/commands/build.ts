@@ -61,10 +61,7 @@ export default class Build extends Command {
 			});
 		}
 
-		if (!flags.output) {
-			process.stdout.write(code);
-			return void this.exit();
-		}
+		if (!flags.output) return void process.stdout.write(code);
 
 		if (existsSync(flags.output)) {
 			// not a file

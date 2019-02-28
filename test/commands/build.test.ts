@@ -58,7 +58,6 @@ describe("build", () => {
 	test
 		.stdout()
 		.command(["build", `${exampleFiles[Example.basic].source}`])
-		.exit(0)
 		.it("runs successfully on a single file and prints the results to stdout", ({ stdout }) => {
 			expect(stdout).to.contain("var msg_int = ");
 		});
