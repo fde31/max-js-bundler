@@ -1,7 +1,7 @@
 {
 	"name": "max-js-bundler",
 	"description": "CLI Tool to bundle and transpile modern JS for usage in [js] and [jsui] in Max MSP.",
-	"version": "1.0.0-beta.1",
+	"version": "1.0.0",
 	"author": "Florian Demmer (@fde31)",
 	"bin": {
 		"max-js-bundler": "./bin/run"
