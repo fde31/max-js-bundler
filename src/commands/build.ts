@@ -1,12 +1,12 @@
-import { Command, flags } from "@oclif/command";
-import { ExitCodes } from "../lib/utils";
+import { Command, flags as flagDefs } from "@oclif/command";
+import { ExitCodes } from "../lib/utils";
 
-import { basename, dirname, isAbsolute, join, normalize } from "path";
+import { dirname, isAbsolute, join, normalize } from "path";
 import { existsSync, promises } from "fs";
 import { isFile, ensureDir } from "../lib/utils";
 
-const { writeFile } = promises;
-import { MaxJSCompiler } from "../lib/maxJSCompiler";
+const { writeFile } = promises;
+import { MaxJSCompiler } from "../lib/maxJSCompiler";
 
 const parseCLIPath = (input: string): string => isAbsolute(input) ? input : normalize(join(process.cwd(), input));
 
@@ -18,16 +18,16 @@ export default class Build extends Command {
 	];
 
 	static flags = {
-		help: flags.help({ char: "h" }),
-		force: flags.boolean({
-			char: "f",
+		help: flagDefs.help({ "char": "h" }),
+		force: flagDefs.boolean({
+			"char": "f",
 			description: "Force overwrite the output file",
-			default: false,
+			"default": false,
 			hidden: false,
 			required: false
 		}),
-		output: flags.string({
-			char: "o",
+		output: flagDefs.string({
+			"char": "o",
 			description: "Output generated file",
 			hidden: false,
 			multiple: false,
@@ -46,12 +46,10 @@ export default class Build extends Command {
 		}
 	];
 
-	async run() {
+	async run(): Promise<void> {
 		const { args, flags } = this.parse(Build);
 
-		// this.log(`Bundling file ${basename(args.file)}`);
-
-		let code: string = "";
+		let code = "";
 		try {
 			const compiler: MaxJSCompiler = new MaxJSCompiler({ filepath: args.file });
 
@@ -59,7 +57,7 @@ export default class Build extends Command {
 			code = await compiler.output();
 		} catch (err) {
 			return void this.error(`Failed to compile JS Code: ${err.message}`, {
-				exit: err.code || ExitCodes.error
+				exit: err.code || ExitCodes.error
 			});
 		}
 

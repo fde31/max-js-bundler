@@ -1,5 +1,5 @@
 import { expect, test } from "@oclif/test";
-import { join } from "path";
+import { join } from "path";
 import { existsSync, promises } from "fs";
 
 import { ExitCodes } from "../../src/lib/utils";
@@ -11,7 +11,7 @@ const ExampleBasePath = join(__dirname, "..", "..", "examples");
 interface ExamplePathInfo {
 	source: string;
 	output: string;
-};
+}
 
 enum Example {
 	basic,
@@ -19,7 +19,7 @@ enum Example {
 	npmImport
 }
 
-const exampleFiles: { [s: number]: ExamplePathInfo;} = {
+const exampleFiles: { [s: number]: ExamplePathInfo} = {
 	[Example.basic]: {
 		source: join(ExampleBasePath, "basic-es6", "index.js"),
 		output: join(__dirname, "basic.build.js")
@@ -33,12 +33,12 @@ const exampleFiles: { [s: number]: ExamplePathInfo;} = {
 		output: join(__dirname, "npm-import.build.js")
 	}
 
-}
+};
 
 const clearExample = async (): Promise<void> => {
 	const keys: string[] = Object.keys(exampleFiles);
-	for (let i: number = 0; i < keys.length; i++) {
-		const key: number = parseInt(keys[i]);
+	for (let i = 0; i < keys.length; i++) {
+		const key: number = parseInt(keys[i], 10);
 		const pathInfo: ExamplePathInfo = exampleFiles[key];
 		if (existsSync(pathInfo.output)) await unlink(pathInfo.output);
 	}
@@ -92,4 +92,4 @@ describe("build", () => {
 			expect(existsSync(exampleFiles[Example.npmImport].output)).to.be.true;
 		});
 
-})
+});

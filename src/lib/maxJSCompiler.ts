@@ -1,6 +1,6 @@
-import { basename, dirname, extname, join } from "path";
+import { basename, dirname, extname } from "path";
 
-import { rollup, RollupBuild, RollupOutput, OutputChunk, OutputAsset } from "rollup";
+import { rollup, RollupBuild, RollupOutput, OutputChunk, OutputAsset } from "rollup";
 import nodeResolve from "rollup-plugin-node-resolve";
 import babelPlugin from "rollup-plugin-babel";
 import commonJSPlugin from "rollup-plugin-commonjs";
@@ -27,8 +27,8 @@ export class MaxJSCompiler {
 
 	constructor({
 		filepath
-	} : {
-		filepath: string
+	}: {
+		filepath: string;
 	}) {
 
 		this.filepath = filepath;
@@ -73,15 +73,15 @@ export class MaxJSCompiler {
 		});
 	}
 
-	async output(): Promise<string>{
+	async output(): Promise<string> {
 
 		if (!this.bundler) throw new Error("Compiler has not been setup yet.");
 
-		const { output } : { output: RollupOutput["output"] } = await this.bundler.generate({
+		const { output }: { output: RollupOutput["output"] } = await this.bundler.generate({
 			banner: MaxJSCompiler.banner,
 			compact: false,
 			// exports: "none",
-			format: 'iife',
+			format: "iife",
 			name: "__c74_gen__",
 			strict: false
 		});

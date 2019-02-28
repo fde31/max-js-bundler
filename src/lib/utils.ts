@@ -1,6 +1,6 @@
 import { existsSync, promises, Stats } from "fs";
 
-const { lstat, mkdir } = promises;
+const { lstat, mkdir } = promises;
 
 export const isFile = async (filepath: string): Promise<boolean> => {
 	if (!existsSync(filepath)) return false;
@@ -14,7 +14,7 @@ export const isDir = async (dirpath: string): Promise<boolean> => {
 	return stats.isDirectory();
 };
 
-export const ensureDir = async (dirpath: string) => {
+export const ensureDir = async (dirpath: string): Promise<void> => {
 	if (!(await isDir(dirpath))) await mkdir(dirpath, { recursive: true });
 };
 
@@ -24,4 +24,4 @@ export enum ExitCodes {
 	no_overwrite=10,
 	no_file_overwrite=11,
 
-};
+}
