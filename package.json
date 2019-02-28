@@ -34,6 +34,8 @@
 		"@types/rollup-plugin-node-resolve": "^4.0.0",
 		"chai": "^4.2.0",
 		"cross-env": "^5.2.0",
+		"eslint": "^5.14.1",
+		"eslint-config-c74": "github:Cycling74/eslint-config-c74#fde/typescript",
 		"globby": "^8.0.2",
 		"mocha": "^5.2.0",
 		"nyc": "^13.1.0",
@@ -65,9 +67,10 @@
 	},
 	"repository": "fde31/max-js-bundler",
 	"scripts": {
+		"lint": "eslint ./src ./test --ext .ts",
 		"postpack": "rm -f oclif.manifest.json",
 		"prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
-		"test": "cross-env TS_NODE_FILES=true nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+		"test": "npm run lint && cross-env TS_NODE_FILES=true nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
 		"version": "oclif-dev readme && git add README.md"
 	},
 	"types": "lib/index.d.ts"
