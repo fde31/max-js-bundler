@@ -80,9 +80,7 @@ export class MaxJSCompiler {
 		const { output }: { output: RollupOutput["output"] } = await this.bundler.generate({
 			banner: MaxJSCompiler.banner,
 			compact: false,
-			// exports: "none",
-			format: "iife",
-			name: "__c74_gen__",
+			format: "c74max",
 			strict: false
 		});
 
