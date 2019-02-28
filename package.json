@@ -48,8 +48,8 @@
 	},
 	"files": [
 		"/bin",
+		"/examples",
 		"/lib",
-		"/npm-shrinkwrap.json",
 		"/oclif.manifest.json"
 	],
 	"homepage": "https://github.com/fde31/max-js-bundler",
