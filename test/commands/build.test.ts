@@ -1,10 +1,15 @@
 import { expect, test } from "@oclif/test";
-import { join } from "path";
+import { dirname, join } from "path";
 import { existsSync, promises } from "fs";
+import { exec } from "child_process";
+import { promisify } from "util";
 
 import { ExitCodes } from "../../src/lib/utils";
 
+const execAsync = promisify(exec);
 const { unlink } = promises;
+
+const NPM_CMD = process.platform === "win32" ? "npm.cmd" : "npm";
 
 const ExampleBasePath = join(__dirname, "..", "..", "examples");
 
@@ -40,7 +45,7 @@ const exampleFiles: { [s: number]: ExamplePathInfo} = {
 
 };
 
-const clearExample = async (): Promise<void> => {
+const clearExamples = async (): Promise<void> => {
 	const keys: string[] = Object.keys(exampleFiles);
 	for (let i = 0; i < keys.length; i++) {
 		const key: number = parseInt(keys[i], 10);
@@ -49,8 +54,30 @@ const clearExample = async (): Promise<void> => {
 	}
 };
 
-before(async () => await clearExample());
-after(async () => await clearExample());
+const prepareExamples = async (): Promise<void> => {
+	const keys: string[] = Object.keys(exampleFiles);
+	for (let i = 0; i < keys.length; i++) {
+		const key: number = parseInt(keys[i], 10);
+		const pathInfo: ExamplePathInfo = exampleFiles[key];
+
+		const exampleDir: string = dirname(pathInfo.source);
+
+		// install dependencies
+		if (existsSync(join(exampleDir, "package.json"))) await execAsync(`${NPM_CMD} ci`, { cwd: exampleDir });
+	}
+};
+
+before(async () => {
+	// delete build files
+	await clearExamples();
+
+	// install example dependencies
+	await prepareExamples();
+});
+
+after(async () => {
+	await clearExamples();
+});
 
 describe("build", () => {
 
