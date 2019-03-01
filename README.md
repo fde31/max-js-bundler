@@ -53,7 +53,7 @@ OPTIONS
   -o, --output=output  Output generated file
 ```
 
-_See code: [src/commands/build.ts](https://github.com/fde31/max-js-bundler/blob/v1.0.2/src/commands/build.ts)_
+_See code: [src/commands/build.ts](https://github.com/fde31/max-js-bundler/blob/v1.0.3/src/commands/build.ts)_
 
 ## `max-js-bundler help [COMMAND]`
 
