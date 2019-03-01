@@ -15,11 +15,11 @@ export class MaxJSCompiler {
 
 	static banner: string = `
 /**
- * This file has been auto-generated using in order to prepare external projects using NPM dependencies etc
- * in the [js] and [jsui] object in Max MSP. Any manual changes might be overwritten when regenerating this
- * file. In case you'd like to learn more, report issues etc - pleaser refer to the Project on GitHub
+ * This file has been auto-generated in order to prepare external projects using NPM dependencies etc
+ * for usage in the [js] and [jsui] object in Max MSP. Any manual changes might be overwritten when regenerating this
+ * file. In case you'd like to learn more, report issues etc - pleaser refer to the Project on GitHub:
  *
- * https://github.com/fde31/n4m_transpile_js
+ * https://github.com/fde31/max-js-bundler
  *
  */`;
 
