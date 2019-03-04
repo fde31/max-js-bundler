@@ -66,8 +66,27 @@ export class MaxJSCompiler {
 				globalsPlugin(),
 				babelPlugin({
 					babelrc: false,
+					exclude: "node_modules/**",
+					externalHelpers: false,
+					runtimeHelpers: true,
+					plugins: [
+						[
+							"@babel/plugin-transform-runtime",
+							{
+								"corejs": 2,
+								"helpers": true,
+								"regenerator": true,
+								"useESModules": true
+							}
+						]
+					],
 					presets: [
-						"@babel/preset-env"
+						[
+							"@babel/preset-env",
+							{
+								"useBuiltIns": "usage"
+							}
+						]
 					]
 				})
 			],
