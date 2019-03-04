@@ -5,5 +5,5 @@ const log = (...args) => {
 };
 
 const bang = () => {
-	post(midi("c4"));
+	log(midi("c4"));
 };
