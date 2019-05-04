@@ -57,7 +57,8 @@ export default class Build extends Command {
 			code = await compiler.output();
 		} catch (err) {
 			return void this.error(`Failed to compile JS Code: ${err.message}`, {
-				exit: err.code || ExitCodes.error
+				code: err.code,
+				exit: ExitCodes.error
 			});
 		}
 
