@@ -2,5 +2,5 @@ module.exports = {
 	env: {
 		node: true
 	},
-	extends: ["c74/ts-config"]
+	extends: ["c74-ts"],
 };

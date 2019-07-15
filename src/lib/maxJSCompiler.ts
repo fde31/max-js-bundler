@@ -73,6 +73,7 @@ export class MaxJSCompiler {
 						[
 							"@babel/plugin-transform-runtime",
 							{
+								"absoluteRuntime": true,
 								"corejs": 2,
 								"helpers": true,
 								"regenerator": true,
