@@ -1,39 +1,12 @@
 {
-  "_from": "max-js-bundler@^1.2.0",
-  "_id": "max-js-bundler@1.2.0",
-  "_inBundle": false,
-  "_integrity": "sha512-YmHGkcKwdnQIMtZmDEzuoRO9xfUV2A9LoXEB/fLIjRWpuXa4OC3Uhgkit2Idt3hR/GoweMZvzSvxJ1c7iBLbug==",
-  "_location": "/max-js-bundler",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "range",
-    "registry": true,
-    "raw": "max-js-bundler@^1.2.0",
-    "name": "max-js-bundler",
-    "escapedName": "max-js-bundler",
-    "rawSpec": "^1.2.0",
-    "saveSpec": null,
-    "fetchSpec": "^1.2.0"
-  },
-  "_requiredBy": [
-    "#USER",
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/max-js-bundler/-/max-js-bundler-1.2.0.tgz",
-  "_shasum": "aaaecd8131c02e55580663350e1a7347182cdd12",
-  "_spec": "max-js-bundler@^1.2.0",
-  "_where": "/Users/jamesdevane/max/patches/dynamic-loopers",
-  "author": {
-    "name": "Florian Demmer",
-    "url": "@fde31"
-  },
+  "name": "max-js-bundler",
+  "description": "CLI Tool to bundle and transpile modern JS for usage in [js] and [jsui] in Max MSP.",
+  "version": "1.2.0",
+  "author": "Florian Demmer (@fde31)",
   "bin": {
-    "max-js-bundler": "bin/run"
+    "max-js-bundler": "./bin/run"
   },
-  "bugs": {
-    "url": "https://github.com/fde31/max-js-bundler/issues"
-  },
-  "bundleDependencies": false,
+  "bugs": "https://github.com/fde31/max-js-bundler/issues",
   "dependencies": {
     "@babel/core": "^7.3.4",
     "@babel/plugin-transform-runtime": "^7.9.0",
@@ -53,8 +26,6 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "tslib": "^1.9.3"
   },
-  "deprecated": false,
-  "description": "CLI Tool to bundle and transpile modern JS for usage in [js] and [jsui] in Max MSP.",
   "devDependencies": {
     "@oclif/dev-cli": "^1.21.2",
     "@oclif/test": "^1.2.4",
@@ -91,7 +62,6 @@
   ],
   "license": "MIT",
   "main": "lib/index.js",
-  "name": "max-js-bundler",
   "oclif": {
     "commands": "./lib/commands",
     "bin": "max-js-bundler",
@@ -99,10 +69,7 @@
       "@oclif/plugin-help"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fde31/max-js-bundler.git"
-  },
+  "repository": "fde31/max-js-bundler",
   "scripts": {
     "lint": "eslint ./src ./test --ext .ts",
     "postpack": "rm -f oclif.manifest.json",
@@ -110,6 +77,5 @@
     "test": "npm run lint && cross-env TS_NODE_FILES=true nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "version": "oclif-dev readme && git add README.md"
   },
-  "types": "lib/index.d.ts",
-  "version": "1.2.0"
+  "types": "lib/index.d.ts"
 }
