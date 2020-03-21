@@ -73,7 +73,7 @@
   "scripts": {
     "lint": "eslint ./src ./test --ext .ts",
     "postpack": "rm -f oclif.manifest.json",
-    "prepare": "rm -rf lib && npx tsc && oclif-dev manifest && oclif-dev readme",
+    "prepack": "rm -rf lib && npx tsc && oclif-dev manifest && oclif-dev readme",
     "test": "npm run lint && cross-env TS_NODE_FILES=true nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "version": "oclif-dev readme && git add README.md"
   },
