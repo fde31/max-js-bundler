@@ -17,7 +17,7 @@
     "@oclif/errors": "^1.2.2",
     "@oclif/plugin-help": "^2.1.6",
     "core-js": "^3.6.4",
-    "rollup": "^2.1.0",
+    "rollup": "github:devanecondition/rollup#fde/max_target-latest",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
