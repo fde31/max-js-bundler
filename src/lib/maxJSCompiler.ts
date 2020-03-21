@@ -21,7 +21,24 @@ export class MaxJSCompiler {
  *
  * https://github.com/fde31/max-js-bundler
  *
- */`;
+ */
+var MAX_MSP = {
+  Buffer: Buffer,
+  File: File,
+  Folder: Folder,
+  Global: Global,
+  Image: Image,
+  LiveAPI: LiveAPI,
+  Maxobj: Maxobj,
+  Patcher: Patcher,
+  PolyBuffer: PolyBuffer,
+  Sketch: Sketch,
+  SQLite: SQLite,
+  SQLResult: SQLResult,
+  Task: Task,
+  Wind: Wind
+};
+`;
 
 	readonly filepath: string;
 	private bundler: RollupBuild | null = null;
@@ -74,7 +91,7 @@ export class MaxJSCompiler {
 							"@babel/plugin-transform-runtime",
 							{
 								"absoluteRuntime": true,
-								"corejs": 2,
+								"corejs": 3,
 								"helpers": true,
 								"regenerator": true,
 								"useESModules": true
@@ -85,7 +102,8 @@ export class MaxJSCompiler {
 						[
 							"@babel/preset-env",
 							{
-								"useBuiltIns": "usage"
+								"useBuiltIns": "usage",
+								"corejs": 3
 							}
 						]
 					]
