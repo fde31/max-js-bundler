@@ -6,7 +6,7 @@ import babelPlugin from "@rollup/plugin-babel";
 import commonJSPlugin from "@rollup/plugin-commonjs";
 import builtinsPlugin from "rollup-plugin-node-builtins";
 import globalsPlugin from "rollup-plugin-node-globals";
-import jsonPlugin from "@rollup/plugin-commonjs";
+import jsonPlugin from "@rollup/plugin-json";
 
 import { isFile } from "./utils";
 
