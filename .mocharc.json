@@ -1,0 +1,8 @@
+{
+	"package": "./package.json",
+	"require": ["ts-node/register"],
+	"recursive": true,
+	"reporter": "spec",
+	"timeout": 10000,
+	"watch-files": ["test/**/*.ts"]
+}
