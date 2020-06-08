@@ -128,6 +128,6 @@ var MAX_MSP = {
 		const outputChunk: OutputChunk | OutputAsset | undefined = result.output.shift();
 		if (!outputChunk || outputChunk.type === "asset") return "";
 
-		return outputChunk.code || "";
+		return (outputChunk.code || "").replace("String(String)", "\"function String() { [native code] }\"");
 	}
 }
