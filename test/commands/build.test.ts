@@ -99,7 +99,7 @@ const prepareExamples = async (): Promise<void> => {
 	}
 };
 
-before(async () => {
+before(async (): Promise<void> => {
 	// delete build files
 	await clearExamples();
 
@@ -107,23 +107,23 @@ before(async () => {
 	await prepareExamples();
 });
 
-after(async () => {
+after(async (): Promise<void> => {
 	await clearExamples();
 });
 
-describe("build", () => {
+describe("build", (): void => {
 
 	// Basics
 	test
 		.stdout()
 		.command(["build", `${exampleFiles[Example.es6Basic].source}`])
-		.it("runs successfully on a single file and prints the results to stdout", ({ stdout }) => {
+		.it("runs successfully on a single file and prints the results to stdout", ({ stdout }): void => {
 			expect(stdout).to.contain("var msg_int = ");
 		});
 
 	test
 		.command(["build", `${exampleFiles[Example.es6Basic].source}`, "--output", `${exampleFiles[Example.es6Basic].output}`])
-		.it("runs successfully on a single file and creates the output file", () => {
+		.it("runs successfully on a single file and creates the output file", (): void => {
 			expect(existsSync(exampleFiles[Example.es6Basic].output)).to.be.true;
 		});
 
@@ -139,7 +139,7 @@ describe("build", () => {
 
 	test
 		.command(["build", `${exampleFiles[Example.es6Basic].source}`, "--output", `${exampleFiles[Example.es6Basic].output}`, "--force"])
-		.it("runs successfully on a single file overwrites the output file", () => {
+		.it("runs successfully on a single file overwrites the output file", (): void => {
 			expect(existsSync(exampleFiles[Example.es6Basic].output)).to.be.true;
 		});
 
@@ -150,7 +150,7 @@ describe("build", () => {
 
 		test
 			.command(["build", `${exampleFiles[key].source}`, "--output", `${exampleFiles[key].output}`, "--force"])
-			.it(`runs successfully on: "${exampleFiles[key].description}"`, () => {
+			.it(`runs successfully on: "${exampleFiles[key].description}"`, (): void => {
 				expect(existsSync(exampleFiles[key].output)).to.be.true;
 			});
 	}
