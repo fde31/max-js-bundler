@@ -83,9 +83,8 @@ var MAX_MSP = {
 				globalsPlugin(),
 				babelPlugin({
 					babelrc: false,
+					babelHelpers: "runtime",
 					exclude: "node_modules/**",
-					externalHelpers: false,
-					runtimeHelpers: true,
 					plugins: [
 						[
 							"@babel/plugin-transform-runtime",
