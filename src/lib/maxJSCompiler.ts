@@ -1,12 +1,12 @@
 import { basename, dirname, extname } from "path";
 
 import { rollup, RollupBuild, RollupOutput, OutputChunk, OutputAsset } from "rollup";
-import nodeResolve from "rollup-plugin-node-resolve";
-import babelPlugin from "rollup-plugin-babel";
-import commonJSPlugin from "rollup-plugin-commonjs";
+import nodeResolve from "@rollup/plugin-node-resolve";
+import babelPlugin from "@rollup/plugin-babel";
+import commonJSPlugin from "@rollup/plugin-commonjs";
 import builtinsPlugin from "rollup-plugin-node-builtins";
 import globalsPlugin from "rollup-plugin-node-globals";
-import jsonPlugin from "rollup-plugin-json";
+import jsonPlugin from "@rollup/plugin-commonjs";
 
 import { isFile } from "./utils";
 
@@ -117,16 +117,18 @@ var MAX_MSP = {
 
 		if (!this.bundler) throw new Error("Compiler has not been setup yet.");
 
-		const { output }: { output: RollupOutput["output"] } = await this.bundler.generate({
+		const result: RollupOutput = await this.bundler.generate({
 			banner: MaxJSCompiler.banner,
 			compact: false,
 			format: "c74max",
 			strict: false
 		});
 
-		if (output.length === 0) throw new Error("No output chunk generated");
+		if (!result.output || result.output.length === 0) throw new Error("No output chunk generated");
 
-		const outputChunk: OutputChunk | OutputAsset | undefined = output.shift();
-		return outputChunk && outputChunk.code ? outputChunk.code : "";
+		const outputChunk: OutputChunk | OutputAsset | undefined = result.output.shift();
+		if (!outputChunk || outputChunk.type === "asset") return "";
+
+		return outputChunk.code || "";
 	}
 }
